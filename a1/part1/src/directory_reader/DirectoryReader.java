@@ -20,13 +20,23 @@ public class DirectoryReader {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int returnVal = fileChooser.showOpenDialog(null);
-
+		
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			File file = fileChooser.getSelectedFile();
 			System.out.println(file);
-
+			
 			// TODO: print the contents of the selected directory, one per
 			// line. Prefix each line with a hyphen and a space: "- ".
+			//Component[] file1 = fileChooser.getComponents();
+			File[] list_of_file = file.listFiles();
+			for(File element : list_of_file) {
+				if (element.isFile()) {
+					System.out.println("- "+element.getName());
+				} else {
+					System.out.println("- "+element.getName()+"/");
+				}
+			}
+			
 		}
 	}
 }
