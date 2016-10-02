@@ -1,5 +1,8 @@
 package binary_tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A node in a binary tree with a value and left and right children.
  */
@@ -20,7 +23,7 @@ class BinaryNode {
      * @param v
      */
     BinaryNode(Object v) {
-        this.value = v;
+        value = v;
     }
 }
 
@@ -82,9 +85,19 @@ public class BinaryTree {
 
         if (curr == null) {
             return null;
-        } else {
-            return null;
         }
+        if (curr.value == parentValue) {
+        		return curr;
+        	}
+        Object left = findParent(curr.left,parentValue);
+        Object right = findParent(curr.right,parentValue);
+        if (left != null){
+        	return (BinaryNode) left;
+        }
+        if (right != null){
+        	return (BinaryNode) right;
+        }
+        return null;
 
         // TODO: complete this method.
     }
@@ -117,11 +130,18 @@ public class BinaryTree {
      * or return "()" if the tree is empty. Empty subtrees should also be
      * represented as "()" — note that this means that all leaves will be
      * represented as "(curr-value () ())".
-     *
+     * if same value of Node occur, choose left one
      * @return a String representation of this tree
      */
     private String toString(BinaryNode curr) {
-        return null;
+    	if (curr == null) {
+            return "()";
+            } else {
+    	String curr_value = curr.value.toString();
+    	String right_value = toString(curr.right);
+    	String left_value = toString(curr.left); 
+        return "("+curr_value+" "+left_value+" "+right_value+")";
+            }
 
         // TODO: complete this method.
     }
