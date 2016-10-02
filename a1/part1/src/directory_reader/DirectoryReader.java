@@ -33,7 +33,7 @@ public class DirectoryReader {
 				if (element.isFile()) {
 					System.out.println("- "+element.getName());
 				} else {
-					System.out.println("- "+element.getName()+"/");
+					//System.out.println("- "+element.getName()+"/");
 				}
 			}
 			
